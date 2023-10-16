@@ -9,22 +9,34 @@ cd "${_PROJECT_DIR}" || exit 2
 
 # Loading base script:
 # shellcheck disable=SC1091
-source "${_PROJECT_DIR}/scripts/base.sh"
+source ./scripts/base.sh
 
 exitIfNoDocker
-exitIfNotExists ".env"
+# exitIfNotExists ".env"
+
+# Loading .env file (if exists):
+if [ -f ".env" ]; then
+	# shellcheck disable=SC1091
+	source .env
+fi
 ## --- Base --- ##
 
 
 ## --- Variables --- ##
+_DEFAULT_SERVICE="api"
+
 # Extending timeout of docker compose logs:
 export COMPOSE_HTTP_TIMEOUT=43200
-
-_DEFAULT_SERVICE="template"
 ## --- Variables --- ##
 
 
 ## --- Functions --- ##
+_doBuild()
+{
+	./scripts/build.sh || exit 2
+	# docker compose build || exit 2
+}
+
 _doValidate()
 {
 	docker compose config || exit 2
@@ -55,8 +67,14 @@ _doStop()
 
 _doRestart()
 {
-	_doStop "${@:-}" || exit 2
-	_doStart "${@:-}" || exit 2
+	if [ "${1:-}" == "-l" ]; then
+		shift
+		_doStop "${@:-}" || exit 2
+		_doStart -l "${@:-}" || exit 2
+	else
+		_doStop "${@:-}" || exit 2
+		_doStart "${@:-}" || exit 2
+	fi
 	# docker compose restart ${@:-} || exit 2
 }
 
@@ -116,6 +134,12 @@ _doImages()
 	docker compose images ${@:-} || exit 2
 }
 
+_doClean()
+{
+	# shellcheck disable=SC2068
+	docker compose down -v ${@:-} || exit 2
+}
+
 _doUpdate()
 {
 	if docker compose ps | grep 'Up' > /dev/null 2>&1; then
@@ -135,7 +159,7 @@ _doUpdate()
 ## --- Menu arguments --- ##
 _exitOnWrongParams()
 {
-	echoInfo "USAGE: ${0} validate | start | stop | restart | logs | list | ps | stats | exec | enter | images | update"
+	echoInfo "USAGE: ${0} build | validate | start | stop | restart | logs | list | ps | stats | exec | enter | images | clean | update"
 	exit 1
 }
 
@@ -147,13 +171,16 @@ main()
 	fi
 
 	case ${1} in
+		build)
+			shift
+			_doBuild;;
 		validate | config)
 			shift
 			_doValidate;;
-		start | run)
+		start | run | up)
 			shift
 			_doStart "${@:-}";;
-		stop | remove | rm | delete | del | end)
+		stop | down | remove | rm | delete | del)
 			shift
 			_doStop "${@:-}";;
 		restart)
@@ -179,6 +206,9 @@ main()
 		images)
 			shift
 			_doImages "${@:-}";;
+		clean)
+			shift
+			_doClean "${@:-}";;
 		update)
 			shift
 			_doUpdate "${@:-}";;

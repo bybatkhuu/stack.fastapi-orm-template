@@ -2,7 +2,7 @@
 	"workbench.iconTheme": "material-icon-theme",
 	"workbench.editor.highlightModifiedTabs": true,
 	"explorer.autoReveal": false,
-	"explorer.openEditors.visible": 0,
+	"explorer.openEditors.visible": 1,
 	"git.autofetch": true,
 	"git.autofetchPeriod": 120,
 	"diffEditor.ignoreTrimWhitespace": false,
@@ -12,6 +12,7 @@
 	"editor.smoothScrolling": true,
 	"editor.detectIndentation": false,
 	"editor.insertSpaces": false,
+	"editor.tabSize": 4,
 	"[markdown]":
 	{
 		"editor.insertSpaces": true,
@@ -19,13 +20,19 @@
 	},
 	"[python]":
 	{
-		"editor.insertSpaces": true,
-		"editor.tabSize": 4
+		"editor.defaultFormatter": "ms-python.black-formatter",
+		"editor.formatOnSave": true,
+		"editor.insertSpaces": true
 	},
 	"[yml]":
 	{
+		"editor.formatOnSave": true,
 		"editor.insertSpaces": true,
 		"editor.tabSize": 2
+	},
+	"[json]":
+	{
+		"editor.formatOnSave": true
 	},
 	"files.eol": "\n",
 	"files.trimTrailingWhitespace": true,
@@ -33,12 +40,14 @@
 	{
 		"*.env": "dotenv",
 		"*.env.*": "dotenv",
-		"*.json.example": "json",
+		"*.json": "jsonc",
+		"*.json.example": "jsonc",
 		"requirements*.txt": "pip-requirements",
 		"*Dockerfile*": "dockerfile",
 		".dockerignore": "ignore",
 		"*.py.bak": "python",
-		"*.conf.template": "nginx"
+		"*.conf.template": "nginx",
+		".gitignore": "ignore"
 	},
 	"files.watcherExclude":
 	{
@@ -123,6 +132,7 @@
 	"python.languageServer": "Pylance",
 	"python.analysis.extraPaths":
 	[
-		"${workspaceFolder}/app/modules"
+		"${workspaceFolder}/volumes/src/rest.fastapi-orm-template/app"
+		// "${workspaceFolder}/volumes/src/rest.fastapi-orm-template/app/src/modules"
 	]
 }

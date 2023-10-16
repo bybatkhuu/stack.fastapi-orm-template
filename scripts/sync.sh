@@ -11,6 +11,12 @@ cd "${_PROJECT_DIR}" || exit 2
 # shellcheck disable=SC1091
 source ./scripts/base.sh
 
+# Checking 'rsync' is installed or not:
+if [ -z "$(which rsync)" ]; then
+	echoError "'rsync' not found or not installed."
+	exit 1
+fi
+
 # Loading .env file (if exists):
 if [ -f ".env" ]; then
 	# shellcheck disable=SC1091
@@ -22,24 +28,36 @@ fi
 ## --- Variables --- ##
 # Load from envrionment variables:
 PROJECT_SLUG="${PROJECT_SLUG:-fastapi-orm-template}"
-BACKUPS_DIR="${BACKUPS_DIR:-./volumes/backups}"
 ## --- Variables --- ##
 
 
 ## --- Main --- ##
 main()
 {
-	if [ ! -d "${BACKUPS_DIR}" ]; then
-		mkdir -pv "${BACKUPS_DIR}" || exit 2
+	## --- Menu arguments --- ##
+	if [ -n "${1:-}" ]; then
+		for _input in "${@:-}"; do
+			case ${_input} in
+				-p=* | --project-slug=*)
+					PROJECT_SLUG="${_input#*=}"
+					shift;;
+				*)
+					echoError "Failed to parsing input -> ${_input}"
+					echoInfo "USAGE: ${0} -p=*, --project-slug=*"
+					exit 1;;
+			esac
+		done
+	fi
+	## --- Menu arguments --- ##
+
+
+	if [ ! -d "${PROJECT_SLUG}" ]; then
+		echoError "Not found '${PROJECT_SLUG}' directory!"
+		exit 1
 	fi
 
-	echoInfo "Checking current version..."
-	_current_version="$(./scripts/get-version.sh)"
-	echoOk "Current version: '${_current_version}'"
-
-	_backup_file_path="${BACKUPS_DIR}/${PROJECT_SLUG}.v${_current_version}.$(date -u '+%y%m%d_%H%M%S').tar.gz"
-	echoInfo "Creating backup file: '${_backup_file_path}'..."
-	tar -czpvf "${_backup_file_path}" -C ./volumes ./storage || exit 2
+	echoInfo "Syncing files..."
+	rsync -av "${PROJECT_SLUG}/" ./
 	echoOk "Done."
 }
 
