@@ -1,0 +1,16 @@
+version: "3.8"
+
+services:
+  template:
+    image: ${IMG_NAMESCAPE}/template:latest
+    # env_file:
+    #   - .env
+    volumes:
+      - "./volumes/.vscode-server:/root/.vscode-server"
+    # deploy:
+    #   replicas: 0
+    #   resources:
+    #     limits:
+    #       cpus: "0.5"
+    #       memory: 512M
+    # command: ["/bin/bash"]

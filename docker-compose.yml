@@ -1,0 +1,16 @@
+version: "3.8"
+
+services:
+  template:
+    image: ${IMG_NAMESCAPE}/template:0.0.0-000000
+    restart: unless-stopped
+    environment:
+      - TERM=${TERM:-xterm}
+      - TZ=${TZ:-Asia/Seoul}
+      - TEMPLATE_PORT=${TEMPLATE_PORT:-8000}
+    volumes:
+      - "./volumes/storage/template/data:/var/lib/template"
+      - "./volumes/storage/template/logs:/var/log/template"
+    ports:
+      - "${TEMPLATE_PORT:-8000}:${TEMPLATE_PORT:-8000}"
+    tty: true
