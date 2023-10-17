@@ -37,7 +37,7 @@ main()
 	_current_version="$(./scripts/get-version.sh)"
 	echoOk "Current version: '${_current_version}'"
 
-	_backup_file_path="${BACKUPS_DIR}/${PROJECT_SLUG}.v${_current_version}.$(date -u '+%y%m%d_%H%M%S').tar.gz"
+	_backup_file_path="${BACKUPS_DIR}/stack.${PROJECT_SLUG}.v${_current_version}.$(date -u '+%y%m%d_%H%M%S').tar.gz"
 	echoInfo "Creating backup file: '${_backup_file_path}'..."
 	tar -czpvf "${_backup_file_path}" -C ./volumes ./storage || exit 2
 	echoOk "Done."

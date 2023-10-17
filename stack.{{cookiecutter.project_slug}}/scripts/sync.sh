@@ -27,7 +27,7 @@ fi
 
 ## --- Variables --- ##
 # Load from envrionment variables:
-PROJECT_SLUG="${PROJECT_SLUG:-{{cookiecutter.project_slug}}}"
+PROJECT_SLUG="stack.${PROJECT_SLUG:-{{cookiecutter.project_slug}}}"
 ## --- Variables --- ##
 
 
