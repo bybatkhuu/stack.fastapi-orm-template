@@ -10,10 +10,4 @@ cd "${_PROJECT_DIR}" || exit 2
 # Loading base script:
 # shellcheck disable=SC1091
 source ./scripts/base.sh
-
-# Loading .env file (if exists):
-if [ -f ".env" ]; then
-	# shellcheck disable=SC1091
-	source .env
-fi
 ## --- Base --- ##
