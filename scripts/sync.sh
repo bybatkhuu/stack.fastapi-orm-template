@@ -27,7 +27,7 @@ fi
 
 ## --- Variables --- ##
 # Load from envrionment variables:
-PROJECT_SLUG="${PROJECT_SLUG:-fastapi-orm-template}"
+PROJECT_SLUG="stack.${PROJECT_SLUG:-fastapi-orm-template}"
 ## --- Variables --- ##
 
 

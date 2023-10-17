@@ -49,8 +49,8 @@ services:
     volumes:
       - "./volumes/storage/fastapi-orm-template/logs:${FOT_APP_LOGS_DIR:-/var/log/fastapi-orm-template}"
       - "./volumes/storage/fastapi-orm-template/data:${FOT_APP_DATA_DIR:-/var/lib/fastapi-orm-template}"
-      - "./volumes/src/rest.fastapi-orm-template/scripts/docker/docker-entrypoint.sh:/usr/local/bin/docker-entrypoint.sh"
-      - "./volumes/src/rest.fastapi-orm-template/app:/app/fastapi-orm-template"
+      - "./volumes/src/fastapi-orm-template/scripts/docker/docker-entrypoint.sh:/usr/local/bin/docker-entrypoint.sh"
+      - "./volumes/src/fastapi-orm-template/app:/app/fastapi-orm-template"
       - "./volumes/.vscode-server:/home/fot-user/.vscode-server"
     # deploy:
     #   replicas: 0

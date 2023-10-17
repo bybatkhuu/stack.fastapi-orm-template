@@ -4,6 +4,7 @@ This is a Stack FastAPI ORM Template project.
 
 ## Features
 
+- Stack
 - FastAPI
 - REST API
 - PostgreSQL

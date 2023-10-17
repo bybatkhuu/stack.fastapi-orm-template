@@ -64,7 +64,7 @@ main()
 	find . -type d -name ".pytest_cache" -exec rm -rfv {} + || exit 2
 	# find . -type d -name ".git" -prune -o -type d -name "logs" -exec rm -rfv {} + || exit 2
 
-	rm -rfv "./${PROJECT_SLUG}" || exit 2
+	rm -rfv "./stack.${PROJECT_SLUG}" || exit 2
 	rm -rfv "./volumes/storage/${PROJECT_SLUG}/logs" || exit 2
 	# rm -rfv ./app/logs || exit 2
 	# rm -rfv ./logs || exit 2
