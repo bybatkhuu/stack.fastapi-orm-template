@@ -524,8 +524,8 @@ archive/
 results/
 extra_configs/
 pythonpath/
-{{cookiecutter.project_slug}}/
-{% raw %}{{cookiecutter.project_slug}}{% endraw %}/
+stack.{{cookiecutter.project_slug}}/
+stack.{% raw %}{{cookiecutter.project_slug}}{% endraw %}/
 .benchmarks/
 .temp/
 .temp.*/
@@ -542,8 +542,8 @@ archive
 results
 extra_configs
 pythonpath
-{{cookiecutter.project_slug}}
-{% raw %}{{cookiecutter.project_slug}}{% endraw %}
+stack.{{cookiecutter.project_slug}}
+stack.{% raw %}{{cookiecutter.project_slug}}{% endraw %}
 pm2-process.json
 sample.py
 example.py
