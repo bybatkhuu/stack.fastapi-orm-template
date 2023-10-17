@@ -21,7 +21,7 @@ This is a Stack FastAPI ORM Template project.
 
 ### 1. Prerequisites
 
-- Install **docker** and **docker-compose** in **server** - <https://docs.docker.com/engine/install>
+- Install **docker** and **docker-compose** - <https://docs.docker.com/engine/install>
 
 For **development**:
 
@@ -68,7 +68,7 @@ git clone --recursive git@github.com:bybatkhuu/stack.fastapi-orm-template.git &&
     git submodule foreach --recursive git checkout main
 ```
 
-**C.** Download source code: <https://github.com/bybatkhuu/rest.fastapi-orm-template/releases>
+**C.** Download source code: <https://github.com/bybatkhuu/stack.fastapi-orm-template/releases>
 
 ### 3. Configure environment
 
@@ -79,7 +79,7 @@ git clone --recursive git@github.com:bybatkhuu/stack.fastapi-orm-template.git &&
 **IMPORTANT:** Please, check **[environment variables](#environment-variables)**!
 
 ```sh
-# Copy '.env.example' file to '.env':
+# Copy '.env.example' file to '.env' file:
 cp -v ./.env.example ./.env
 
 # Edit environment variables to fit in your environment:
@@ -96,7 +96,7 @@ export _ENV=[ENV]
 # For example for development environment:
 export _ENV=dev
 
-# Copy 'docker-compose.override.[ENV].yml' into 'docker-compose.override.yml' file:
+# Copy 'docker-compose.override.[ENV].yml' file to 'docker-compose.override.yml' file:
 cp -v ./templates/docker-compose/docker-compose.override.${_ENV}.yml ./docker-compose.override.yml
 
 # Edit 'docker-compose.override.yml' file to fit in your environment:
@@ -167,11 +167,6 @@ FOT_DB_DATABASE=fot_db
 FOT_APP_PORT=8000
 FOT_APP_LOGS_DIR="/var/log/fastapi-orm-template"
 FOT_APP_DATA_DIR="/var/lib/fastapi-orm-template"
-
-
-## -- Docker build args -- ##
-# HASH_PASSWORD="\$1\$K4Iyj0KF\$SyXMbO1NTSeKzng1TBzHt."
-# IMG_ARGS="--build-arg HASH_PASSWORD=${HASH_PASSWORD}"
 ```
 
 ## Arguments
