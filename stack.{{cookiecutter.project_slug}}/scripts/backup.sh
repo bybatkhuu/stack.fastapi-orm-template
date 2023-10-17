@@ -21,7 +21,7 @@ fi
 
 ## --- Variables --- ##
 # Load from envrionment variables:
-PROJECT_SLUG="${PROJECT_SLUG:-fastapi-orm-template}"
+PROJECT_SLUG="${PROJECT_SLUG:-{{cookiecutter.project_slug}}}"
 BACKUPS_DIR="${BACKUPS_DIR:-./volumes/backups}"
 ## --- Variables --- ##
 

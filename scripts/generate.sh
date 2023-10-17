@@ -10,4 +10,24 @@ cd "${_PROJECT_DIR}" || exit 2
 # Loading base script:
 # shellcheck disable=SC1091
 source ./scripts/base.sh
+
+# Checking 'cookiecutter' is installed or not:
+if [ -z "$(which cookiecutter)" ]; then
+	echoError "'cookiecutter' not found or not installed."
+	exit 1
+fi
 ## --- Base --- ##
+
+
+## --- Main --- ##
+main()
+{
+	echoInfo "Generating project..."
+
+	cookiecutter -f .
+
+	echoOk "Done."
+}
+
+main "${@:-}"
+## --- Main --- ##

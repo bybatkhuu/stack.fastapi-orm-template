@@ -1,12 +1,18 @@
-# Stack Template
+# Stack FastAPI ORM Template (Cookiecutter)
 
-This is a template repo for a stack services.
+This is a cookiecutter template for FastAPI stack projects.
 
 ## Features
 
+- Cookiecutter
+- FastAPI
+- REST API
+- ORM (SQLAlchemy)
+- Web service
+- Microservice
 - Template
 - CI/CD
-- Docker and docker-compose
+- Docker and docker compose
 
 ---
 
@@ -14,7 +20,7 @@ This is a template repo for a stack services.
 
 ### 1. Prerequisites
 
-- Install **docker** and **docker-compose** in **server** - <https://docs.docker.com/engine/install>
+- Install **docker** and **docker-compose** - <https://docs.docker.com/engine/install>
 
 For **development**:
 
@@ -40,146 +46,60 @@ export _REPO_OWNER=username
 
 **2.2.** Follow one of the below options **[A]**, **[B]** or **[C]**:
 
-**A.** Download source code from releases page:
-
-- Releases - <https://github.com/[REPO_OWNER]/stack.template/releases>
+**A.** Clone the repository (for **public**: git + https):
 
 ```sh
-# Set to downloaded version:
-export _VERSION=[VERSION]
+git clone https://github.com/${_REPO_OWNER}/stack.fastapi-orm-template.git && \
+    cd stack.fastapi-orm-template && \
+    git checkout cookiecutter
+```
+
+**B.** Clone the repository (for **development**: git + ssh key):
+
+```sh
+git clone git@github.com:${_REPO_OWNER}/stack.fastapi-orm-template.git && \
+    cd stack.fastapi-orm-template && \
+    git checkout cookiecutter
+```
+
+**C.** Or download source code.
+
+### 3. Install cookiecutter
+
+```bash
+# Install cookiecutter:
+pip install -U cookiecutter
+# Or:
+pip install -r ./requirements.txt
+```
+
+### 4. Generate project with cookiecutter
+
+```bash
+# Generate project (project name, project slug, repo owner, version, etc.):
+cookiecutter -f .
+# Or:
+./scripts/generate.sh
+```
+
+### 5. Start the project
+
+```bash
+cd [PROJECT_NAME]
 # For example:
-export _VERSION=1.0.0
+cd stack.fastapi-orm-template
 
-# Move downloaded archive file to current projects directory:
-mv -v ~/Downloads/stack.template-${_VERSION}.zip .
+# Start:
+./compose.sh start -l
 
-# Extract downloaded archive file:
-unzip stack.template-${_VERSION}.zip
-
-# Remove downloaded archive file:
-rm -v stack.template-${_VERSION}.zip
-
-# Rename extracted directory into project name:
-mv -v stack.template-${_VERSION} stack.template && cd stack.template
-```
-
-**B.** Or clone the repository (git + ssh key):
-
-```sh
-git clone git@github.com:${_REPO_OWNER}/stack.template.git && cd stack.template
-```
-
-**C.** **[For development]** Or clone with all submodules (git + ssh key):
-
-```sh
-git clone --recursive git@github.com:${_REPO_OWNER}/stack.template.git && cd stack.template && \
-    git submodule update --init --recursive && git submodule foreach --recursive git checkout main
-```
-
-### 3. Configure environment
-
-**TIP:** Skip this step, if you've already configured environment.
-
-**3.1.** Configure **`.env`** file:
-
-**IMPORTANT:** Please, check **[environment variables](#environment-variables)**!
-
-```sh
-# Copy .env.example file into .env file:
-cp -v .env.example .env
-
-# Edit environment variables to fit in your environment:
-nano .env
-```
-
-**3.2.** Configure **`docker-compose.override.yml`** file:
-
-**IMPORTANT:** Please, check **[arguments](#arguments)**!
-
-```sh
-# Set environment:
-export _ENV=[ENV]
-# For example for development environment:
-export _ENV=dev
-
-# Copy docker-compose.override.[ENV].yml into docker-compose.override.yml file:
-cp -v ./templates/docker-compose/docker-compose.override.${_ENV}.yml docker-compose.override.yml
-
-# Edit docker-compose.override.yml file to fit in your environment:
-nano docker-compose.override.yml
-```
-
-**3.3.** Validate docker compose configuration:
-
-**NOTICE:** If you get an error or warning, check your configuration files (**`.env`** or **`docker-compose.override.yml`**).
-
-```sh
-./stack.template-compose.sh validate
-
-# Or:
-docker compose config
-```
-
-### 4. Run docker compose
-
-```sh
-./stack.template-compose.sh start -l
-
-# Or:
-docker compose up -d && docker compose logs -f --tail 100
-```
-
-### 5. Stop docker compose
-
-```sh
-./stack.template-compose.sh stop
-
-# Or:
-docker compose down
+# Stop:
+./compose.sh stop
 ```
 
 :thumbsup: :sparkles:
 
----
-
-## Environment Variables
-
-You can use the following environment variables to configure:
-
-[**`.env.example`**](.env.example)
-
-```sh
-## Docker image namespace:
-IMG_NAMESCAPE=username
-
-## Template port:
-TEMPLATE_PORT=8000
-```
-
-## Arguments
-
-You can use the following arguments to configure:
-
-**template**:
-
-```txt
--b, --bash, bash, /bin/bash
-    Run only bash shell.
-```
-
-For example as in [**`docker-compose.override.yml`**](templates/docker-compose/docker-compose.override.dev.yml) file:
-
-```yml
-    command: ["/bin/bash"]
-```
-
-## Roadmap
-
-...
-
----
-
 ## References
 
-- Docker - <https://www.docker.com>
-- Docker Compose - <https://docs.docker.com/compose>
+- Cookiecutter (GitHub) - <https://github.com/cookiecutter/cookiecutter>
+- Cookiecutter (Docs) - <https://cookiecutter.readthedocs.io/en/stable>
+- FastAPI - <https://fastapi.tiangolo.com>

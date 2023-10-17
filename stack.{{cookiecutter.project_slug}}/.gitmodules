@@ -1,0 +1,3 @@
+[submodule "volumes/src/{{cookiecutter.project_slug}}"]
+	path = volumes/src/{{cookiecutter.project_slug}}
+	url = ../rest.{{cookiecutter.project_slug}}.git

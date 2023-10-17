@@ -2,9 +2,9 @@ version: "3.8"
 
 services:
   db:
-    hostname: ${FOT_DB_HOST:-db}
+    hostname: {% raw %}${{% endraw %}{{cookiecutter.env_prefix}}DB_HOST:-db}
     # environment:
-    #   PGPORT: ${FOT_DB_PORT:-5432}
+    #   PGPORT: {% raw %}${{% endraw %}{{cookiecutter.env_prefix}}DB_PORT:-5432}
     # volumes:
     #   - "./volumes/storage/postgresql/conf.d:/etc/postgresql:ro"
     #   - "./volumes/storage/postgresql/docker-entrypoint-initdb.d:/docker-entrypoint-initdb.d:ro"
@@ -16,7 +16,7 @@ services:
     #       cpus: "1.0"
     #       memory: 1G
     # ports:
-    #     - "${FOT_DB_PORT:-5432}:${FOT_DB_PORT:-5432}"
+    #     - "{% raw %}${{% endraw %}{{cookiecutter.env_prefix}}DB_PORT:-5432}:{% raw %}${{% endraw %}{{cookiecutter.env_prefix}}DB_PORT:-5432}"
 
   # db-gui:
   #   image: dpage/pgadmin4:latest
@@ -24,8 +24,8 @@ services:
   #     - db
   #   restart: unless-stopped
   #   environment:
-  #     PGADMIN_DEFAULT_EMAIL: ${PGADMIN_EMAIL:-fot_user@example.com}
-  #     PGADMIN_DEFAULT_PASSWORD: "${PGADMIN_PASSWORD:-fot_password1}"
+  #     PGADMIN_DEFAULT_EMAIL: ${PGADMIN_EMAIL:-{{cookiecutter.project_abbr}}_user@{{cookiecutter.domain}}}
+  #     PGADMIN_DEFAULT_PASSWORD: "${PGADMIN_PASSWORD:-{{cookiecutter.project_abbr}}_password1}"
   #   volumes:
   #     - "/etc/localtime:/etc/localtime:ro"
   #     - "db-gui-data:/var/lib/pgadmin"
@@ -48,7 +48,7 @@ services:
     #       cpus: "0.5"
     #       memory: 512M
     # command: ["/bin/bash"]
-    # command: ["-b", "sleep 3 && uvicorn main:app --host=0.0.0.0 --port=${FOT_APP_PORT:-8000} --no-server-header --proxy-headers --forwarded-allow-ips='*' --no-access-log"]
+    # command: ["-b", "sleep 3 && uvicorn main:app --host=0.0.0.0 --port={% raw %}${{% endraw %}{{cookiecutter.env_prefix}}APP_PORT:-8000} --no-server-header --proxy-headers --forwarded-allow-ips='*' --no-access-log"]
 
 
 # volumes:

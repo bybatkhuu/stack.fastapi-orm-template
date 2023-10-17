@@ -10,15 +10,12 @@ on:
   push:
     tags:
       - "v*.*.*"
-  # pull_request:
-  #   branches:
-  #     - main
 
 jobs:
   create_release:
     name: Create Release
     runs-on: ubuntu-22.04
-    if: ${{ github.ref_type == 'tag' }}
+    if: {% raw %}${{ github.ref_type == 'tag' }}{% endraw %}
     permissions:
       contents: write
     steps:
@@ -28,5 +25,5 @@ jobs:
       -
         name: Create release
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: {% raw %}${{ secrets.GITHUB_TOKEN }}{% endraw %}
         run: gh release create ${GITHUB_REF_NAME} --generate-notes

@@ -524,7 +524,8 @@ archive/
 results/
 extra_configs/
 pythonpath/
-stack.fastapi-orm-template/
+{{cookiecutter.project_slug}}/
+{% raw %}{{cookiecutter.project_slug}}{% endraw %}/
 .benchmarks/
 .temp/
 .temp.*/
@@ -541,7 +542,8 @@ archive
 results
 extra_configs
 pythonpath
-stack.fastapi-orm-template
+{{cookiecutter.project_slug}}
+{% raw %}{{cookiecutter.project_slug}}{% endraw %}
 pm2-process.json
 sample.py
 example.py
