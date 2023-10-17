@@ -12,7 +12,6 @@ This is a Stack FastAPI ORM Template project.
 - Web service
 - Microservice
 - Template
-- Cookiecutter
 - CI/CD
 - Docker and docker compose
 
