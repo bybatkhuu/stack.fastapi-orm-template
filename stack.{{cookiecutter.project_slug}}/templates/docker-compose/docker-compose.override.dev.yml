@@ -39,6 +39,7 @@ services:
   #     - "${PGADMIN_PORT:-8080}:80"
 
   api:
+    image: {{cookiecutter.docker_registry}}/{{cookiecutter.project_slug}}:latest
     env_file:
       - .env
     volumes:

@@ -12,7 +12,7 @@ services:
       - "./volumes/storage/postgresql/data:/var/lib/postgresql/data"
 
   api:
-    image: {{cookiecutter.docker_registry}}/{{cookiecutter.project_slug}}:0.0.2-231015
+    image: {{cookiecutter.docker_registry}}/{{cookiecutter.project_slug}}:{{cookiecutter.version}}
     depends_on:
       - db
     restart: unless-stopped
