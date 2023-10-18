@@ -1,6 +1,6 @@
 # Stack FastAPI ORM Template (Cookiecutter)
 
-This is a cookiecutter template for FastAPI stack projects.
+This is a cookiecutter template for FastAPI ORM stack projects.
 
 ## Features
 
@@ -22,6 +22,10 @@ This is a cookiecutter template for FastAPI stack projects.
 
 ### 1. Prerequisites
 
+- Install **Python (>= v3.9)** and **pip**:
+    - **[RECOMMENDED] Miniconda (v3)** - <https://docs.conda.io/projects/miniconda/en/latest/index.html>
+    - *[arm64/aarch64] Miniforge (v3)* - <https://github.com/conda-forge/miniforge>
+    - *[OPTIONAL] venv* - <https://docs.python.org/3/library/venv.html>
 - Install **docker** and **docker-compose** - <https://docs.docker.com/engine/install>
 
 For **development**:
