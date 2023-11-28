@@ -80,7 +80,6 @@
 		"**/*.log": true,
 		"**/*.out": true,
 		"**/*.bak": true,
-		"**/.bak.*": true,
 		"**/.DS_Store": true,
 		"**/Thumbs.db": true
 	},
@@ -124,7 +123,6 @@
 		"**/*.log": true,
 		"**/*.out": true,
 		"**/*.bak": true,
-		"**/.bak.*": true,
 		"**/.DS_Store": true,
 		"**/Thumbs.db": true
 	},
@@ -132,7 +130,7 @@
 	"python.languageServer": "Pylance",
 	"python.analysis.extraPaths":
 	[
-		"${workspaceFolder}/volumes/src/fastapi-orm-template/app"
-		// "${workspaceFolder}/volumes/src/fastapi-orm-template/app/src/modules"
+		"${workspaceFolder}/volumes/src/rest.fastapi-orm-template/app"
+		// "${workspaceFolder}/volumes/src/rest.fastapi-orm-template/app/src/modules"
 	]
 }
