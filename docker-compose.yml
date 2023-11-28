@@ -18,7 +18,7 @@ services:
     tty: true
 
   api:
-    image: bybatkhuu/fastapi-orm-template:1.0.2-231127
+    image: bybatkhuu/fastapi-orm-template:1.0.1-231128
     depends_on:
       - db
     restart: unless-stopped
