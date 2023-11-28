@@ -65,7 +65,7 @@ main()
 	# find . -type d -name ".git" -prune -o -type d -name "logs" -exec rm -rfv {} + || exit 2
 
 	rm -rfv "./stack.${PROJECT_SLUG}" || exit 2
-	rm -rfv "./volumes/storage/${PROJECT_SLUG}/logs" || exit 2
+	rm -rfv "./volumes/storage/rest.${PROJECT_SLUG}/logs" || exit 2
 	# rm -rfv ./app/logs || exit 2
 	# rm -rfv ./logs || exit 2
 
@@ -73,7 +73,7 @@ main()
 		rm -rf "./volumes/.vscode-server/*" || exit 2
 		rm -rfv ./volumes/storage/postgresql/data || exit 2
 		rm -rfv "./volumes/storage/postgresql/logs/*" || exit 2
-		rm -rfv "./volumes/storage/${PROJECT_SLUG}/data" || exit 2
+		rm -rfv "./volumes/storage/rest.${PROJECT_SLUG}/data" || exit 2
 		rm -rfv ./volumes/backups || exit 2
 
 		docker compose down -v || exit 2
