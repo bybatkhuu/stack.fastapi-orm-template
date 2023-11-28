@@ -18,7 +18,7 @@ services:
     tty: true
 
   api:
-    image: bybatkhuu/fastapi-orm-template:1.0.3-231128
+    image: bybatkhuu/rest.fastapi-orm-template:1.0.4-231128
     depends_on:
       - db
     restart: unless-stopped
@@ -27,8 +27,8 @@ services:
       TZ: ${TZ:-Asia/Seoul}
       FOT_APP_PORT: ${FOT_APP_PORT:-8000}
     volumes:
-      - "./volumes/storage/fastapi-orm-template/logs:/var/log/fastapi-orm-template"
-      - "./volumes/storage/fastapi-orm-template/data:/var/lib/fastapi-orm-template"
+      - "./volumes/storage/rest.fastapi-orm-template/logs:/var/log/rest.fastapi-orm-template"
+      - "./volumes/storage/rest.fastapi-orm-template/data:/var/lib/rest.fastapi-orm-template"
     ports:
       - "${FOT_APP_PORT:-8000}:${FOT_APP_PORT:-8000}"
     tty: true
