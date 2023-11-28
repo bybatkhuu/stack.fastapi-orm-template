@@ -39,7 +39,7 @@ services:
   #     - "${PGADMIN_PORT:-8080}:80"
 
   api:
-    image: {{cookiecutter.docker_registry}}/{{cookiecutter.project_slug}}:{{cookiecutter.sub_version}}-gpu
+    image: {{cookiecutter.docker_registry}}/rest.{{cookiecutter.project_slug}}:{{cookiecutter.sub_version}}-gpu
     runtime: nvidia
     env_file:
       - .env

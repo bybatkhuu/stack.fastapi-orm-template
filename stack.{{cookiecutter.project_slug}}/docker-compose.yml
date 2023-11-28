@@ -18,7 +18,7 @@ services:
     tty: true
 
   api:
-    image: {{cookiecutter.docker_registry}}/{{cookiecutter.project_slug}}:{{cookiecutter.sub_version}}
+    image: {{cookiecutter.docker_registry}}/rest.{{cookiecutter.project_slug}}:{{cookiecutter.sub_version}}
     depends_on:
       - db
     restart: unless-stopped
@@ -27,8 +27,8 @@ services:
       TZ: ${TZ:-Asia/Seoul}
       {{cookiecutter.env_prefix}}APP_PORT: {% raw %}${{% endraw %}{{cookiecutter.env_prefix}}APP_PORT:-8000}
     volumes:
-      - "./volumes/storage/{{cookiecutter.project_slug}}/logs:/var/log/{{cookiecutter.project_slug}}"
-      - "./volumes/storage/{{cookiecutter.project_slug}}/data:/var/lib/{{cookiecutter.project_slug}}"
+      - "./volumes/storage/rest.{{cookiecutter.project_slug}}/logs:/var/log/rest.{{cookiecutter.project_slug}}"
+      - "./volumes/storage/rest.{{cookiecutter.project_slug}}/data:/var/lib/rest.{{cookiecutter.project_slug}}"
     ports:
       - "{% raw %}${{% endraw %}{{cookiecutter.env_prefix}}APP_PORT:-8000}:{% raw %}${{% endraw %}{{cookiecutter.env_prefix}}APP_PORT:-8000}"
     tty: true
