@@ -1,7 +1,7 @@
 FROM postgres:15.5-bookworm
 
 # Installing system dependencies
-# hadolint ignore=DL3008
+# hadolint ignore=DL3008,SC3037
 RUN rm -rfv /var/lib/apt/lists/* /var/cache/apt/archives/* /tmp/* /root/.cache/* && \
 	apt-get clean -y && \
 	apt-get update --fix-missing -o Acquire::CompressionTypes::Order::=gz && \
@@ -16,6 +16,8 @@ RUN rm -rfv /var/lib/apt/lists/* /var/cache/apt/archives/* /tmp/* /root/.cache/*
 	update-locale LANG=en_US.UTF-8 && \
 	echo "LANGUAGE=en_US.UTF-8" >> /etc/default/locale && \
 	echo "LC_ALL=en_US.UTF-8" >> /etc/default/locale && \
+	echo "alias ls='ls -aF --group-directories-first --color=auto'" >> /root/.bashrc && \
+	echo -e "alias ll='ls -alhF --group-directories-first --color=auto'\n" >> /root/.bashrc && \
 	rm -rfv /var/lib/apt/lists/* /var/cache/apt/archives/* /tmp/* /root/.cache/*
 
 ENV LANG=en_US.UTF-8 \
