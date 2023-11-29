@@ -2,7 +2,7 @@ version: "3.8"
 
 services:
   db:
-    image: bybatkhuu/postgres:15.4-bookworm
+    image: bybatkhuu/postgres:15.5-bookworm
     build:
       context: .
       dockerfile: db.Dockerfile

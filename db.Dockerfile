@@ -1,4 +1,4 @@
-FROM postgres:15.4-bookworm
+FROM postgres:15.5-bookworm
 
 # Installing system dependencies
 # hadolint ignore=DL3008
