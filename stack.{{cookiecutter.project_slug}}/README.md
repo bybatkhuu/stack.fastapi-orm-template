@@ -45,11 +45,11 @@ cd ~/workspaces/projects
 **A.** Clone the repository (for **public**: git + https):
 
 ```sh
-git clone https://github.com/bybatkhuu/stack.{{cookiecutter.project_slug}}.git && \
+git clone https://github.com/{{cookiecutter.github_owner}}/stack.{{cookiecutter.project_slug}}.git && \
     cd stack.{{cookiecutter.project_slug}}
 
 # Or clone with all submodules:
-git clone --recursive https://github.com/bybatkhuu/stack.{{cookiecutter.project_slug}}.git && \
+git clone --recursive https://github.com/{{cookiecutter.github_owner}}/stack.{{cookiecutter.project_slug}}.git && \
     cd stack.{{cookiecutter.project_slug}} && \
     git submodule update --init --recursive && \
     git submodule foreach --recursive git checkout main
@@ -58,17 +58,17 @@ git clone --recursive https://github.com/bybatkhuu/stack.{{cookiecutter.project_
 **B.** Clone the repository (for **development**: git + ssh key):
 
 ```sh
-git clone git@github.com:bybatkhuu/stack.{{cookiecutter.project_slug}}.git && \
+git clone git@github.com:{{cookiecutter.github_owner}}/stack.{{cookiecutter.project_slug}}.git && \
     cd stack.{{cookiecutter.project_slug}}
 
 # Or clone with all submodules:
-git clone --recursive git@github.com:bybatkhuu/stack.{{cookiecutter.project_slug}}.git && \
+git clone --recursive git@github.com:{{cookiecutter.github_owner}}/stack.{{cookiecutter.project_slug}}.git && \
     cd stack.{{cookiecutter.project_slug}} && \
     git submodule update --init --recursive && \
     git submodule foreach --recursive git checkout main
 ```
 
-**C.** Download source code: <https://github.com/bybatkhuu/stack.{{cookiecutter.project_slug}}/releases>
+**C.** Download source code: <https://github.com/{{cookiecutter.github_owner}}/stack.{{cookiecutter.project_slug}}/releases>
 
 ### 3. Configure environment
 
