@@ -6,7 +6,6 @@ services:
     # environment:
     #   PGPORT: ${FOT_DB_PORT:-5432}
     # volumes:
-    #   - "./volumes/storage/postgresql/conf.d:/etc/postgresql:ro"
     #   - "./volumes/storage/postgresql/docker-entrypoint-initdb.d:/docker-entrypoint-initdb.d:ro"
     #   - "./volumes/storage/postgresql/logs:/var/log/postgresql"
     # deploy:

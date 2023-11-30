@@ -6,7 +6,6 @@ services:
     # environment:
     #   PGPORT: ${FOT_DB_PORT:-5432}
     # volumes:
-    #   - "./volumes/storage/postgresql/conf.d:/etc/postgresql:ro"
     #   - "./volumes/storage/postgresql/docker-entrypoint-initdb.d:/docker-entrypoint-initdb.d:ro"
     #   - "./volumes/storage/postgresql/logs:/var/log/postgresql"
     # deploy:
@@ -39,7 +38,7 @@ services:
   #     - "${PGADMIN_PORT:-8080}:80"
 
   api:
-    image: bybatkhuu/rest.fastapi-orm-template:1.1.0-231129-gpu
+    image: bybatkhuu/rest.fastapi-orm-template:1.2.0-231130-gpu
     runtime: nvidia
     env_file:
       - .env
